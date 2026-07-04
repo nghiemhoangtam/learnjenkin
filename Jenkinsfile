@@ -23,6 +23,17 @@ pipeline {
     stages {
         stage('Môi trường') {
             steps {
+                echo 'Thông tin Jenkins agent:'
+                echo "  NODE_NAME       = ${env.NODE_NAME}"
+                echo "  NODE_LABELS     = ${env.NODE_LABELS}"
+                echo "  EXECUTOR_NUMBER = ${env.EXECUTOR_NUMBER}"
+                echo "  WORKSPACE       = ${env.WORKSPACE}"
+                echo "  JENKINS_URL     = ${env.JENKINS_URL}"
+                sh '''
+                    echo "Hostname = $(hostname)"
+                    echo "OS       = $(uname -s)"
+                    echo "Arch     = $(uname -m)"
+                '''
                 echo 'Kiểm tra công cụ build...'
                 sh 'go version'
                 sh 'echo "GOPATH=$GOPATH" && echo "PATH=$PATH"'

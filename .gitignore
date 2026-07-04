@@ -1,0 +1,11 @@
+# Binary build ra
+/bin/
+app/app
+app/bin/
+
+# File coverage / báo cáo test
+*.out
+coverage.html
+
+# Go build cache local (nếu có)
+.gocache/

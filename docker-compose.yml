@@ -1,0 +1,19 @@
+services:
+  jenkins:
+    build:
+      context: ./jenkins
+    image: learnjenkin/jenkins-go:latest
+    container_name: jenkins-lab
+    restart: unless-stopped
+    ports:
+      - "8080:8080"     # Giao diện web Jenkins
+      - "50000:50000"   # Cổng kết nối cho agent (chưa dùng trong lab này)
+    volumes:
+      # Lưu toàn bộ dữ liệu Jenkins (job, config, plugin...) để không mất khi restart.
+      - jenkins_home:/var/jenkins_home
+      # Mount source code của lab vào container ở chế độ chỉ đọc.
+      # Nhờ đó có thể tạo pipeline lấy code từ đường dẫn local /workspace mà không cần GitHub.
+      - ./:/workspace:ro
+
+volumes:
+  jenkins_home:

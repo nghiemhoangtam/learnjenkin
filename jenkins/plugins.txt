@@ -1,0 +1,6 @@
+# Bộ plugin tối thiểu cho lab. Mỗi dòng là 1 plugin (dùng bản mới nhất).
+workflow-aggregator
+git
+github
+pipeline-stage-view
+ws-cleanup
